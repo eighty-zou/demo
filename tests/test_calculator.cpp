@@ -76,6 +76,11 @@ TEST(tokenize_decimal) {
     ASSERT_EQ(3.14, tok.value);
 }
 
+TEST(tokenize_multiple_decimals) {
+    Tokenizer t("3.14.15");
+    ASSERT_THROWS(t.nextToken());
+}
+
 TEST(tokenize_operators) {
     Tokenizer t("+-*/");
     if (t.nextToken().type != TokenType::Plus) throw std::runtime_error("Expected Plus");
